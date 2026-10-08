@@ -1,0 +1,13 @@
+# docker compose up          -> practice mode (planted bugs on)
+# ARYA_MODE=clean docker compose up
+services:
+  sandbox:
+    image: ghcr.io/byshivam/arya-bank-sandbox:latest
+    build: .
+    ports:
+      - "8000:8000"
+      - "4173:4173"
+    environment:
+      ARYA_MODE: ${ARYA_MODE:-practice}
+    volumes:
+      - ./data:/data

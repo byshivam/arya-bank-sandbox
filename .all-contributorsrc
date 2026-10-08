@@ -1,0 +1,21 @@
+{
+  "projectName": "arya-bank-sandbox",
+  "projectOwner": "byshivam",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md"],
+  "imageSize": 80,
+  "commit": false,
+  "commitConvention": "none",
+  "contributorsPerLine": 7,
+  "linkToUsage": false,
+  "contributors": [
+    {
+      "login": "byshivam",
+      "name": "Shivam Tayal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71970833?v=4",
+      "profile": "https://github.com/byshivam",
+      "contributions": ["code", "doc", "ideas", "maintenance", "test"]
+    }
+  ]
+}

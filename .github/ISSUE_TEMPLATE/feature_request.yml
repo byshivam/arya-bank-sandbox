@@ -1,0 +1,20 @@
+name: Feature or docs improvement
+description: A new endpoint, page, setting, starter suite, or a docs fix.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What would it help testers practise?
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Want to build it?
+      options:
+        - label: I'd like to open the PR myself

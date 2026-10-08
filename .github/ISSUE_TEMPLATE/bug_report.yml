@@ -1,0 +1,39 @@
+name: Real bug in the sandbox
+description: Something is broken that is NOT one of the planted bugs (it also happens in clean mode, or the sandbox won't start).
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Quick check first: does it also happen with `ARYA_MODE=clean`? If not, it's probably a planted bug,
+        which is the game, not a problem. See [challenges](https://github.com/byshivam/arya-bank-sandbox/tree/main/challenges).
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Does it happen in clean mode?
+      options: ["Yes, also in clean mode", "The sandbox won't start / crashes", "Not sure"]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Requests, clicks, or a failing test. Use seed account ids (reset first) so others can reproduce.
+      placeholder: |
+        1. curl -X POST localhost:8000/_admin/reset
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behaviour
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Image tag (e.g. 1.0.0) or commit, and how you run it (Docker, Codespaces, Python + Node)
+    validations:
+      required: true

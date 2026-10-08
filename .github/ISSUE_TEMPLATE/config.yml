@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Found one of the 16 planted bugs?
+    url: https://github.com/byshivam/arya-bank-sandbox/blob/main/challenges/ANSWERS.md
+    about: Nice! Check your answer here instead of opening an issue, so others can still play.
+  - name: Questions, ideas and sharing your test suite
+    url: https://github.com/byshivam/arya-bank-sandbox/discussions
+    about: Ask anything, or post a link to the tests you wrote against the sandbox.

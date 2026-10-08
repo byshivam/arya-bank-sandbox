@@ -1,0 +1,29 @@
+name: New bug or challenge idea
+description: Suggest a realistic bug to plant, and what kind of testing should find it.
+labels: ["challenge idea"]
+body:
+  - type: textarea
+    id: bug
+    attributes:
+      label: The bug
+      description: What goes wrong, and have you seen something like it in a real app? (No company names needed.)
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      options: ["Payments API", "Net banking web app", "Database / ledger", "Something new"]
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: What kind of test should catch it?
+      description: e.g. boundary values, contract test, DB reconciliation, accessibility scan, concurrency, cross-browser
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Want to build it?
+      options:
+        - label: I'd like to open the PR myself
