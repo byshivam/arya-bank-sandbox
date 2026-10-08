@@ -1,7 +1,10 @@
 name: release
 
-# Push a tag like v1.0.0 to publish ghcr.io/byshivam/arya-bank-sandbox:1.0.0 (and :latest)
-# for both Intel/AMD and Apple Silicon/ARM machines, and create a GitHub release.
+# Publish a release to build ghcr.io/byshivam/arya-bank-sandbox:1.0.0 (and :latest) for both
+# Intel/AMD and Apple Silicon/ARM machines. Two ways, both work:
+#   * GitHub UI: Releases -> Draft a new release -> new tag v1.0.0 on main -> Publish
+#   * git: git tag v1.0.0 && git push origin v1.0.0
+# Either way the release notes are filled in from CHANGELOG.md.
 
 on:
   push:
@@ -56,6 +59,12 @@ jobs:
           awk -v v="$version" '$0 ~ "^## \\[?"v"\\]?" {on=1; next} on && /^## / {exit} on {print}' CHANGELOG.md > notes.md
           printf '\n**Run it:** `docker run --rm -p 8000:8000 -p 4173:4173 ghcr.io/%s:%s`\n' "$GITHUB_REPOSITORY" "$version" >> notes.md
           cat notes.md
-      - env:
+      - name: Create the release, or fill in one made in the GitHub UI
+        env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" --notes-file notes.md
+          else
+            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+          fi
